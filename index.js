@@ -17,7 +17,7 @@ module.exports = function (file, opts) {
         sopts.push(JSON.stringify(key) + ':' + JSON.stringify(opts[key]))
       }
     })
-    return { _expr: h + '(' + JSON.stringify(tagName)
+    return { _expr: h + '(' + (/[A-Z]/.test(tagName[0]) ? tagName : JSON.stringify(tagName))
       + ',{' + sopts.join(',') + '}'
       + (children && children.length ? (',[' + children.map(child).join(',') + ']') : '')
       + ')' }
